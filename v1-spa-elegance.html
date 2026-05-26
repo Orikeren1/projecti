@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>לנה אקלר קוסמטיקס · קליניקת קוסמטיקה בקדימה צורן</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f5efe7;
+    --bg-2: #ede5d8;
+    --paper: #faf6f0;
+    --ink: #2a2620;
+    --ink-2: #4a423a;
+    --muted: #8a7f70;
+    --line: #d9cfbf;
+    --line-soft: #e7ddcc;
+    --accent: #a08566;
+    --accent-dark: #75614a;
+    --accent-soft: #e8dccb;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Heebo',system-ui,sans-serif;font-weight:400;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  body{overflow-x:hidden}
+  .serif{font-family:'Frank Ruhl Libre',serif;font-weight:400;letter-spacing:-0.01em}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.22em;color:var(--accent-dark);text-transform:uppercase;font-weight:500}
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
+  .h1{font-family:'Frank Ruhl Libre',serif;font-weight:300;font-size:clamp(40px,6vw,76px);line-height:1.05;letter-spacing:-0.02em;color:var(--ink)}
+  .h2{font-family:'Frank Ruhl Libre',serif;font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.15;letter-spacing:-0.015em}
+  .lead{font-size:18px;color:var(--ink-2);max-width:56ch}
+
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(245,239,231,.85);backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid var(--line-soft)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:1320px;margin:0 auto;gap:18px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{height:46px;width:auto}
+  .brand-text{display:flex;flex-direction:column;line-height:1.1}
+  .brand-text .name{font-family:'Frank Ruhl Libre',serif;font-size:18px;color:var(--ink)}
+  .brand-text .sub{font-size:10px;letter-spacing:.28em;color:var(--accent-dark);text-transform:uppercase;margin-top:2px}
+  .nav-links{display:flex;gap:30px;font-size:14.5px;color:var(--ink-2)}
+  .nav-links a{position:relative;padding:6px 0}
+  .nav-links a:hover{color:var(--accent-dark)}
+  .nav-cta{display:flex;gap:10px;align-items:center}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font-weight:500;font-size:14.5px;border:1px solid transparent;transition:all .25s ease;white-space:nowrap;cursor:pointer}
+  .btn svg{width:16px;height:16px}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn-whats{background:#25D366;color:#fff}
+  .btn-whats:hover{background:#1ebd5a}
+  .btn-line{background:transparent;color:var(--ink-2);border-color:var(--line)}
+  .btn-line:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-lg{padding:16px 28px;font-size:15.5px}
+
+  /* HERO */
+  .hero{padding:60px 0 100px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns: 1.05fr .95fr;gap:64px;align-items:center}
+  .hero-eye{margin-bottom:22px}
+  .hero h1{margin:0 0 22px}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--accent-dark)}
+  .hero-lead{font-size:19px;color:var(--ink-2);max-width:48ch;margin-bottom:34px}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:42px}
+  .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:540px;border-top:1px solid var(--line-soft);padding-top:26px}
+  .trust .num{font-family:'Frank Ruhl Libre',serif;font-size:32px;color:var(--ink);line-height:1}
+  .trust .lbl{font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:.04em}
+
+  .hero-art{position:relative;aspect-ratio: 4/5;border-radius:6px;overflow:hidden;background:var(--accent-soft)}
+  .hero-art img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+  .hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,38,32,0) 60%,rgba(42,38,32,.18))}
+  .hero-tag{position:absolute;right:-22px;top:34px;background:var(--paper);border:1px solid var(--line);padding:14px 18px;border-radius:6px;box-shadow:0 12px 40px -16px rgba(42,38,32,.25);max-width:220px;z-index:2}
+  .hero-tag .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:6px}
+  .hero-tag .text{font-family:'Frank Ruhl Libre',serif;font-size:16px;line-height:1.3;color:var(--ink)}
+  .hero-badge{position:absolute;right:30px;bottom:30px;background:rgba(250,246,240,.94);backdrop-filter:blur(6px);padding:14px 18px;border-radius:6px;display:flex;gap:10px;align-items:center;z-index:2}
+  .hero-badge .stars{color:#d4a44a;letter-spacing:2px;font-size:14px}
+  .hero-badge .txt{font-size:13px;color:var(--ink-2)}
+  .hero-badge .txt b{color:var(--ink);font-weight:600}
+
+  /* PROBLEM */
+  .problem{padding:90px 0;background:var(--bg-2);position:relative}
+  .problem-grid{display:grid;grid-template-columns: .9fr 1.1fr;gap:80px;align-items:start}
+  .problem h2{margin-bottom:24px}
+  .problem p{font-size:18px;color:var(--ink-2);line-height:1.75;margin-bottom:18px}
+  .problem-mark{font-family:'Frank Ruhl Libre',serif;font-style:italic;font-size:130px;color:var(--accent);line-height:.7;margin-bottom:0}
+
+  /* SERVICES */
+  .services{padding:110px 0}
+  .section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:54px;gap:40px;flex-wrap:wrap}
+  .section-head .left{max-width:560px}
+  .section-head h2{margin-top:14px}
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .svc{background:var(--paper);border:1px solid var(--line-soft);border-radius:6px;padding:32px 26px;transition:all .3s ease;position:relative;overflow:hidden;min-height:260px;display:flex;flex-direction:column}
+  .svc:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 18px 50px -24px rgba(42,38,32,.22)}
+  .svc-ico{width:48px;height:48px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:22px;color:var(--accent-dark)}
+  .svc-ico svg{width:22px;height:22px;stroke-width:1.4}
+  .svc h3{font-family:'Frank Ruhl Libre',serif;font-size:22px;font-weight:400;margin-bottom:10px;letter-spacing:-0.01em}
+  .svc p{font-size:14.5px;color:var(--muted);line-height:1.6;flex:1}
+  .svc-num{position:absolute;left:18px;top:14px;font-family:'Frank Ruhl Libre',serif;font-size:13px;color:var(--accent);font-style:italic}
+
+  /* WHY */
+  .why{padding:110px 0;background:var(--ink);color:var(--paper)}
+  .why .serif{color:var(--paper)}
+  .why .eyebrow{color:#c9b394}
+  .why .eyebrow::before{background:#c9b394}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:54px}
+  .why h2{color:#f3e8d8;font-weight:300}
+  .why h2 em{font-style:italic;color:#c9b394}
+  .why-list{display:grid;grid-template-columns:1fr 1fr;gap:38px 30px}
+  .why-item .num{font-family:'Frank Ruhl Libre',serif;font-style:italic;font-size:22px;color:#c9b394;margin-bottom:14px;display:block;border-bottom:1px solid rgba(201,179,148,.3);padding-bottom:10px}
+  .why-item h4{font-family:'Frank Ruhl Libre',serif;font-weight:400;font-size:22px;color:#f3e8d8;margin-bottom:10px;letter-spacing:-0.01em}
+  .why-item p{font-size:14.5px;color:#bbae9b;line-height:1.65}
+
+  /* REVIEWS */
+  .reviews{padding:110px 0;background:var(--bg-2)}
+  .reviews .section-head{margin-bottom:60px}
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .review{background:var(--paper);border:1px solid var(--line-soft);border-radius:6px;padding:34px 30px;display:flex;flex-direction:column}
+  .review .stars{color:#d4a44a;font-size:15px;letter-spacing:2px;margin-bottom:18px}
+  .review .quote{font-family:'Frank Ruhl Libre',serif;font-size:19px;line-height:1.55;color:var(--ink);font-weight:400;letter-spacing:-0.005em;flex:1;text-wrap:pretty}
+  .review .who{margin-top:24px;padding-top:20px;border-top:1px solid var(--line-soft);display:flex;align-items:center;gap:12px}
+  .review .avatar{width:42px;height:42px;border-radius:50%;background:var(--accent-soft);color:var(--accent-dark);display:flex;align-items:center;justify-content:center;font-family:'Frank Ruhl Libre',serif;font-size:18px}
+  .review .meta .nm{font-weight:500;font-size:14.5px;color:var(--ink)}
+  .review .meta .src{font-size:12px;color:var(--muted);margin-top:1px}
+
+  /* PROCESS */
+  .process{padding:110px 0}
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:54px;border-top:1px solid var(--line)}
+  .step{padding:42px 32px 0;border-left:1px solid var(--line);position:relative}
+  .step:last-child{border-left:none}
+  .step .n{font-family:'Frank Ruhl Libre',serif;font-style:italic;font-size:48px;color:var(--accent);line-height:1;margin-bottom:18px}
+  .step h4{font-family:'Frank Ruhl Libre',serif;font-weight:400;font-size:26px;letter-spacing:-0.01em;margin-bottom:12px}
+  .step p{font-size:15px;color:var(--muted);line-height:1.65}
+
+  /* FAQ */
+  .faq{padding:110px 0;background:var(--bg-2)}
+  .faq-grid{display:grid;grid-template-columns: .9fr 1.1fr;gap:80px;align-items:start}
+  .faq-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .qa{border-bottom:1px solid var(--line);padding:0}
+  .qa summary{padding:24px 0;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;font-family:'Frank Ruhl Libre',serif;font-size:22px;color:var(--ink);font-weight:400;letter-spacing:-0.01em;transition:color .2s}
+  .qa summary::-webkit-details-marker{display:none}
+  .qa summary:hover{color:var(--accent-dark)}
+  .qa .plus{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .25s}
+  .qa[open] .plus{background:var(--ink);color:var(--paper);border-color:var(--ink);transform:rotate(45deg)}
+  .qa-body{padding:0 0 26px;color:var(--ink-2);font-size:16px;line-height:1.7;max-width:60ch}
+
+  /* CONTACT */
+  .contact{padding:110px 0}
+  .contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;background:var(--paper);border:1px solid var(--line-soft);border-radius:8px;overflow:hidden}
+  .contact-inner{padding:60px 56px}
+  .contact h2{margin-bottom:18px}
+  .contact-lead{color:var(--ink-2);margin-bottom:38px;max-width:44ch}
+  .contact-rows{display:flex;flex-direction:column;gap:22px;margin-bottom:34px}
+  .crow{display:flex;gap:18px;align-items:flex-start}
+  .crow .ico{width:40px;height:40px;border-radius:50%;background:var(--accent-soft);color:var(--accent-dark);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .crow .ico svg{width:18px;height:18px;stroke-width:1.5}
+  .crow .lbl{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .crow .val{font-family:'Frank Ruhl Libre',serif;font-size:20px;color:var(--ink);margin-top:3px;letter-spacing:-0.005em}
+  .crow .val.sm{font-family:'Heebo',sans-serif;font-size:15px;line-height:1.65;color:var(--ink-2)}
+  .contact-cta{display:flex;gap:10px;flex-wrap:wrap}
+
+  .contact-map{position:relative;background:var(--accent-soft);min-height:520px;overflow:hidden}
+  .map-svg{position:absolute;inset:0;width:100%;height:100%}
+  .map-pin{position:absolute;left:50%;top:46%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;gap:6px}
+  .map-pin-dot{width:14px;height:14px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 6px rgba(42,38,32,.15),0 0 0 14px rgba(42,38,32,.08)}
+  .map-card{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);background:var(--paper);border:1px solid var(--line);padding:14px 20px;border-radius:6px;display:flex;align-items:center;gap:14px;white-space:nowrap;box-shadow:0 12px 40px -20px rgba(42,38,32,.3)}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#c9b394;padding:70px 0 36px}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;margin-bottom:54px}
+  .ft-brand img{height:60px;width:auto;margin-bottom:18px;filter:brightness(0) invert(.85) sepia(.5)}
+  .ft-brand p{font-size:14px;color:#a89881;line-height:1.7;max-width:34ch}
+  .ft-col h5{font-family:'Frank Ruhl Libre',serif;font-size:16px;color:#f3e8d8;font-weight:400;margin-bottom:18px;letter-spacing:.04em}
+  .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .ft-col a{font-size:14px;color:#a89881;transition:color .2s}
+  .ft-col a:hover{color:#f3e8d8}
+  .ft-bottom{border-top:1px solid rgba(201,179,148,.18);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:#8a7d65}
+
+  /* MOBILE */
+  @media (max-width: 980px){
+    .hero-grid,.problem-grid,.why-grid,.faq-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
+    .services-grid{grid-template-columns:repeat(2,1fr)}
+    .review-grid{grid-template-columns:1fr;gap:18px}
+    .process-grid{grid-template-columns:1fr}
+    .step{border-left:none;border-bottom:1px solid var(--line);padding:32px 0}
+    .step:last-child{border-bottom:none}
+    .why-list{grid-template-columns:1fr;gap:30px}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+    .contact-inner{padding:44px 28px}
+    .contact-map{min-height:340px}
+    .nav-links{display:none}
+    .hero-tag{right:-10px;top:18px;padding:10px 14px;max-width:170px}
+    .hero-tag .text{font-size:14px}
+    .hero{padding:36px 0 70px}
+    .problem,.services,.why,.reviews,.process,.faq,.contact{padding:70px 0}
+    .trust{grid-template-columns:repeat(3,1fr);gap:10px}
+    .trust .num{font-size:24px}
+    .trust .lbl{font-size:11px}
+    .nav-cta .btn.btn-line{display:none}
+    .wrap{padding:0 20px}
+    .nav-inner{padding:12px 20px}
+    .brand img{height:38px}
+    .brand-text .name{font-size:15px}
+    .brand-text .sub{font-size:9px}
+    .btn{padding:11px 16px;font-size:13.5px}
+    .btn-lg{padding:14px 22px;font-size:14.5px}
+  }
+  @media (max-width: 480px){
+    .footer-grid{grid-template-columns:1fr}
+    .nav-cta .btn-primary span{display:none}
+    .nav-cta .btn-primary{padding:11px 13px}
+  }
+</style>
+</head>
+<body data-screen-label="V1 — Spa Elegance">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <img src="assets/logo.png" alt="לנה אקלר קוסמטיקס" />
+      <span class="brand-text">
+        <span class="name">לנה אקלר</span>
+        <span class="sub">Cosmetics</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">טיפולים</a>
+      <a href="#why">למה אצלי</a>
+      <a href="#reviews">המלצות</a>
+      <a href="#faq">שאלות</a>
+      <a href="#contact">יצירת קשר</a>
+    </div>
+    <div class="nav-cta">
+      <a href="https://wa.me/972542015724" class="btn btn-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        וואטסאפ
+      </a>
+      <a href="tel:0542015724" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>חייגי 054-201-5724</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow hero-eye">קליניקת קוסמטיקה · קדימה צורן</span>
+        <h1 class="h1">טיפולי פנים מותאמים אישית, <em>בידיים שמכירות עור</em>.</h1>
+        <p class="hero-lead">קליניקה אישית של לנה אקלר — עשרות שנות ניסיון בטיפולי פנים, אנטי־אייג'ינג, פיגמנטציה, אקנה וחומצה היאלורונית. אבחון רגוע, טיפול נקי, תוצאה שמורגשת.</p>
+        <div class="hero-cta">
+          <a href="tel:0542015724" class="btn btn-primary btn-lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            לקביעת תור · 054-201-5724
+          </a>
+          <a href="https://wa.me/972542015724" class="btn btn-whats btn-lg">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg>
+            שלחי הודעה בוואטסאפ
+          </a>
+        </div>
+        <div class="trust">
+          <div><div class="num">25+</div><div class="lbl">שנות ניסיון</div></div>
+          <div><div class="num">4.9★</div><div class="lbl">דירוג בגוגל</div></div>
+          <div><div class="num">100%</div><div class="lbl">התאמה אישית</div></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="assets/hero.webp" alt="לנה אקלר בקליניקה" />
+        <div class="hero-tag">
+          <div class="label">הטיפולים שלי</div>
+          <div class="text">אבחון רגוע ופרוטוקול מותאם לסוג העור שלך</div>
+        </div>
+        <div class="hero-badge">
+          <div class="stars">★★★★★</div>
+          <div class="txt"><b>4.9</b> · עשרות ביקורות</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="wrap">
+    <div class="problem-grid">
+      <div>
+        <span class="eyebrow">למה זה חשוב</span>
+        <div class="problem-mark">“</div>
+      </div>
+      <div>
+        <h2 class="h2 serif">עור מטופח לא מתחיל במוצרים — הוא מתחיל באבחון נכון.</h2>
+        <p>רוב הנשים מנסות סדרה אחר סדרה של מוצרים, סרומים ופרוטוקולים שמצאו ברשת — ועדיין רואות פיגמנטציה שחוזרת, אקנה שמדאיג, עור עייף או לחות שלא מחזיקה.</p>
+        <p>הקליניקה שלי בנויה אחרת: כל לקוחה מתחילה באבחון יסודי של מצב העור, ורק לאחר מכן נבנה מסלול טיפול קצר ומדויק. בלי מוצרים מיותרים, בלי הבטחות שווא — תוצאה שמרגישים ורואים.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="left">
+        <span class="eyebrow">הטיפולים בקליניקה</span>
+        <h2 class="h2 serif">מגוון רחב של טיפולים — כל אחד מותאם אישית לעור שלך.</h2>
+      </div>
+      <a href="#contact" class="btn btn-ghost">לייעוץ אישי ←</a>
+    </div>
+    <div class="services-grid">
+      <div class="svc">
+        <span class="svc-num">01</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M8 12c1.5-3 6.5-3 8 0"/><circle cx="9.5" cy="10" r=".8" fill="currentColor"/><circle cx="14.5" cy="10" r=".8" fill="currentColor"/></svg></div>
+        <h3>טיפול פנים מתקדם</h3>
+        <p>ניקוי עומק, פילינג, מסכות והזנה — פרוטוקול מותאם לסוג העור והעונה.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-num">02</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <h3>טיפולי אנטי־אייג'ינג</h3>
+        <p>חידוש עור, מיצוק והגברת קולגן באמצעים מקצועיים שמיועדים לעור בוגר.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-num">03</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="10" r="1.5"/><circle cx="15" cy="14" r="1.5"/><circle cx="10" cy="16" r="1"/><circle cx="16" cy="9" r="1"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>טיפול אקנה</h3>
+        <p>פרוטוקול שקט וממוקד להרגעת אקנה פעיל, צמצום נגעים ושמירה ארוכת טווח.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-num">04</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 14c4-7 12-7 16 0M6 14a6 6 0 0 0 12 0"/></svg></div>
+        <h3>טיפול בפיגמנטציה</h3>
+        <p>הבהרת כתמים, השוואת גוון העור וטיפול בכתמים שנגרמו מהשמש או הריון.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-num">05</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></div>
+        <h3>חומצה היאלורונית</h3>
+        <p>הזרקת לחות עמוקה לעור, מילוי קווים עדינים והענקת מראה רענן וזוהר.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-num">06</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12c0-3 4-5 9-5s9 2 9 5-4 5-9 5-9-2-9-5z"/><path d="M9 12h6"/></svg></div>
+        <h3>הסרת שיער (אפילציה)</h3>
+        <p>טיפולי שעווה מקצועיים — מדויקים, נקיים, ועם תשומת לב לעור הרגיש.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-num">07</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 14c4-4 8-2 10 0 2 2 6 4 8 0M5 10c2-1 4 0 5 1"/></svg></div>
+        <h3>עיצוב וסידור גבות</h3>
+        <p>עיצוב גבות בקו אישי, סידור צורה, צביעה והדגשה שמחמיאים למבנה הפנים.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-num">08</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>פרוטוקול בהתאמה אישית</h3>
+        <p>מסלול טיפול ארוך טווח שנבנה אחרי אבחון יסודי וליווי בין הטיפולים.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="wrap">
+    <span class="eyebrow">למה לבחור בקליניקה שלי</span>
+    <h2 class="h2 serif">אני מאמינה שיופי <em>אמיתי</em> מתחיל מתשומת לב.</h2>
+    <div class="why-grid">
+      <p style="color:#bbae9b;font-size:18px;line-height:1.75;max-width:42ch">כל לקוחה אצלי מקבלת זמן מלא, חדר נקי, מוצרים מקצועיים ושיחה כנה על מה שנכון לה — לא מה שמודרני השבוע.</p>
+      <div class="why-list">
+        <div class="why-item">
+          <span class="num">01 / ניסיון</span>
+          <h4>עשרות שנות ניסיון מקצועי</h4>
+          <p>ידע מבוסס, יד יציבה ושיקול דעת שבא מאלפי טיפולים בשטח.</p>
+        </div>
+        <div class="why-item">
+          <span class="num">02 / זמינות</span>
+          <h4>זמינות גבוהה כל השבוע</h4>
+          <p>שעות פעילות ארוכות וגמישות, כולל ימי שישי, לקליניקה בקדימה צורן.</p>
+        </div>
+        <div class="why-item">
+          <span class="num">03 / נקיון</span>
+          <h4>סטריליות ואסתטיקה</h4>
+          <p>כלים חד־פעמיים, חדר נקי ומסודר וחוויית טיפול רגועה במיוחד.</p>
+        </div>
+        <div class="why-item">
+          <span class="num">04 / שירות</span>
+          <h4>שירות אישי וכן</h4>
+          <p>בלי דחיפות מכירה — רק מה שנכון לעור שלך באמת, בשפה ברורה.</p>
+        </div>
+        <div class="why-item">
+          <span class="num">05 / מחיר</span>
+          <h4>מחיר הוגן ושקוף</h4>
+          <p>הצעת מחיר ברורה מראש, ללא הפתעות, וללא דחיפת מוצרים מיותרים.</p>
+        </div>
+        <div class="why-item">
+          <span class="num">06 / קהילה</span>
+          <h4>לקוחות חוזרות שנים</h4>
+          <p>רוב הלקוחות שלי מגיעות אליי שנים. זה הקומפלימנט שאני הכי גאה בו.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="left">
+        <span class="eyebrow">מה אומרות הלקוחות</span>
+        <h2 class="h2 serif">המלצות אמיתיות מגוגל.</h2>
+      </div>
+      <div class="hero-badge" style="position:relative;right:auto;bottom:auto">
+        <div class="stars">★★★★★</div>
+        <div class="txt"><b>4.9</b> מתוך 5 · עשרות ביקורות</div>
+      </div>
+    </div>
+    <div class="review-grid">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p class="quote">לנה המקסימה מקצוענית, מדויקת ומאוד מהירה. אני עושה אצלה כבר שנים והעבודה מחזיקה מעמד. הקליניקה נעימה ונגישה. ממליצה בחום.</p>
+        <div class="who">
+          <div class="avatar">נ</div>
+          <div class="meta"><div class="nm">נטע כהן</div><div class="src">ביקורת מגוגל · לפני שנה</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p class="quote">עשיתי אצל לנה טיפול פנים וגבות ויצאתי ממש מרוצה. מקצועית, נעימה, ולכל אורך הטיפול הרגשתי שאני בידיים טובות. ידי זהב!</p>
+        <div class="who">
+          <div class="avatar">ד</div>
+          <div class="meta"><div class="nm">דניאל ברקוביץ'</div><div class="src">ביקורת מגוגל · לפני שנה</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p class="quote">אני לקוחה של לנה מזה שנים רבות. אדיבה, נחמדה, ודייקנית הן בזמנים והן בעבודה המדויקת. החדר נעים ומטופח. כיף לבוא ולצאת מתוקתקת.</p>
+        <div class="who">
+          <div class="avatar">ע</div>
+          <div class="meta"><div class="nm">ענת רוזן</div><div class="src">ביקורת מגוגל · לפני שנה</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="left">
+        <span class="eyebrow">איך זה עובד</span>
+        <h2 class="h2 serif">תהליך פשוט, בלי הפתעות.</h2>
+      </div>
+    </div>
+    <div class="process-grid">
+      <div class="step">
+        <div class="n">01</div>
+        <h4>יצירת קשר</h4>
+        <p>מתאמות שיחה קצרה בטלפון או בוואטסאפ, מבררות מה את מחפשת ומתאמות מועד שמתאים לך.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h4>אבחון והצעת מסלול</h4>
+        <p>בקליניקה אבחן את מצב העור, נשוחח לעומק, ואציע לך פרוטוקול טיפול ברור ושקוף.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h4>טיפול והנחיות</h4>
+        <p>הטיפול עצמו רגוע ונעים, ובסיומו תקבלי המלצות לטיפוח ביתי ולמועד הביקור הבא.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div>
+        <span class="eyebrow">שאלות נפוצות</span>
+        <h2 class="h2 serif" style="margin-top:14px">כל מה שכדאי לדעת לפני הטיפול הראשון.</h2>
+        <p class="lead" style="margin-top:20px">לא מצאת תשובה? אני זמינה בטלפון או בוואטסאפ בכל שעות הפעילות.</p>
+      </div>
+      <div class="faq-list">
+        <details class="qa" open>
+          <summary>האם צריך לתאם תור מראש? <span class="plus">+</span></summary>
+          <div class="qa-body">כן, כל הטיפולים אצלי בתיאום מראש בלבד, כדי לוודא שאני מקדישה לכל לקוחה את הזמן המלא לטיפול ולשיחה. אפשר לתאם בטלפון או בהודעת וואטסאפ.</div>
+        </details>
+        <details class="qa">
+          <summary>כמה זמן אורך טיפול פנים? <span class="plus">+</span></summary>
+          <div class="qa-body">טיפול פנים סטנדרטי אורך בין שעה לשעה וחצי, תלוי בפרוטוקול שנבחר. בפגישה הראשונה אקדיש זמן נוסף לאבחון מעמיק.</div>
+        </details>
+        <details class="qa">
+          <summary>האם הטיפולים מתאימים לעור רגיש? <span class="plus">+</span></summary>
+          <div class="qa-body">בהחלט. אני מאבחנת כל עור באופן פרטני, ובוחרת חומרים ופרוטוקול בהתאם לרגישות, גיל וצרכים. גם עור רגיש מאוד מקבל טיפול מותאם.</div>
+        </details>
+        <details class="qa">
+          <summary>האם יש חניה ליד הקליניקה? <span class="plus">+</span></summary>
+          <div class="qa-body">כן, הקליניקה ממוקמת ברחוב הפלמ"ח 117 בקדימה צורן, עם חניה נוחה ברחוב ובסביבה הקרובה.</div>
+        </details>
+        <details class="qa">
+          <summary>איך משלמים על הטיפול? <span class="plus">+</span></summary>
+          <div class="qa-body">ניתן לשלם במזומן, באשראי או בהעברה בנקאית. מחיר הטיפול נמסר באופן ברור מראש, בלי הפתעות בסוף.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-inner">
+        <span class="eyebrow">צרי קשר</span>
+        <h2 class="h2 serif" style="margin-top:14px">אשמח לראות אותך בקליניקה.</h2>
+        <p class="contact-lead">פנייה קצרה — ואני חוזרת אלייך בהקדם עם זמינות וייעוץ ראשוני בחינם.</p>
+
+        <div class="contact-rows">
+          <div class="crow">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><div class="lbl">טלפון</div><div class="val"><a href="tel:0542015724">054-201-5724</a></div></div>
+          </div>
+          <div class="crow">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg></div>
+            <div><div class="lbl">וואטסאפ</div><div class="val"><a href="https://wa.me/972542015724">שלחי הודעה ←</a></div></div>
+          </div>
+          <div class="crow">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="lbl">כתובת</div><div class="val">הפלמ"ח 117, קדימה צורן</div></div>
+          </div>
+          <div class="crow">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div><div class="lbl">שעות פעילות</div><div class="val sm">ראשון, שני, שלישי, רביעי, חמישי · 8:30–18:00<br/>שישי · 8:30–14:00 · שבת סגור</div></div>
+          </div>
+        </div>
+
+        <div class="contact-cta">
+          <a href="tel:0542015724" class="btn btn-primary">חייגי עכשיו</a>
+          <a href="https://wa.me/972542015724" class="btn btn-whats">וואטסאפ</a>
+          <a href="https://maps.google.com/?q=הפלמ״ח+117+קדימה+צורן" target="_blank" class="btn btn-ghost">נווטי אליי ←</a>
+        </div>
+      </div>
+
+      <div class="contact-map">
+        <svg class="map-svg" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <pattern id="mapdots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+              <circle cx="10" cy="10" r=".7" fill="#a08566" opacity=".35"/>
+            </pattern>
+          </defs>
+          <rect width="400" height="500" fill="#e8dccb"/>
+          <rect width="400" height="500" fill="url(#mapdots)"/>
+          <path d="M0,180 Q100,150 200,200 T400,210" stroke="#c9b394" stroke-width="22" fill="none" opacity=".55"/>
+          <path d="M50,0 L60,500" stroke="#c9b394" stroke-width="14" fill="none" opacity=".5"/>
+          <path d="M280,0 L320,500" stroke="#c9b394" stroke-width="14" fill="none" opacity=".5"/>
+          <path d="M0,360 L400,370" stroke="#c9b394" stroke-width="18" fill="none" opacity=".5"/>
+          <rect x="120" y="60" width="80" height="60" fill="#d9cfbf" opacity=".5" rx="2"/>
+          <rect x="220" y="240" width="50" height="80" fill="#d9cfbf" opacity=".5" rx="2"/>
+          <rect x="80" y="400" width="100" height="50" fill="#d9cfbf" opacity=".5" rx="2"/>
+        </svg>
+        <div class="map-pin"><div class="map-pin-dot"></div></div>
+        <div class="map-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2a2620" stroke-width="1.6" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <div style="font-family:'Frank Ruhl Libre',serif;font-size:16px;color:var(--ink)">לנה אקלר קוסמטיקס</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:1px">הפלמ"ח 117, קדימה צורן</div>
+          </div>
+          <a href="https://maps.google.com/?q=הפלמ״ח+117+קדימה+צורן" target="_blank" style="margin-right:6px;color:var(--accent-dark);font-size:13px">נווטי ←</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="ft-brand">
+        <img src="assets/logo.png" alt="לנה אקלר קוסמטיקס" />
+        <p>קליניקת קוסמטיקה אישית בקדימה צורן. עשרות שנות ניסיון בטיפולי פנים מתקדמים, אנטי־אייג'ינג, אקנה ופיגמנטציה.</p>
+      </div>
+      <div class="ft-col">
+        <h5>הקליניקה</h5>
+        <ul>
+          <li><a href="#services">טיפולים</a></li>
+          <li><a href="#why">למה לבחור</a></li>
+          <li><a href="#reviews">המלצות</a></li>
+          <li><a href="#faq">שאלות נפוצות</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>צרי קשר</h5>
+        <ul>
+          <li><a href="tel:0542015724">054-201-5724</a></li>
+          <li><a href="https://wa.me/972542015724">וואטסאפ</a></li>
+          <li><a href="https://maps.google.com/?q=הפלמ״ח+117+קדימה+צורן" target="_blank">הפלמ"ח 117, קדימה צורן</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>שעות פעילות</h5>
+        <ul>
+          <li>ראשון–חמישי · 8:30–18:00</li>
+          <li>שישי · 8:30–14:00</li>
+          <li>שבת · סגור</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div>© לנה אקלר קוסמטיקס · כל הזכויות שמורות</div>
+      <div>עיצוב באהבה · קדימה צורן</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
