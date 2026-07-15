@@ -1,0 +1,16 @@
+# פלטים וקבצים זמניים של הכלי – שומרים על מבנה התיקיות אך לא על התוכן
+output/*
+previews/*
+debug/*
+input/*
+!*/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# מערכת
+.DS_Store
